@@ -1,0 +1,121 @@
+@rem:1080/16rem;
+
+.home_content_cookBook{
+            margin-top:40/@rem;
+            background-color: #fff;
+            .home_cookBook_top{
+                height:200/@rem;
+                line-height:200/@rem;
+                padding:0 5%;
+                .home_cookBook_top_left{
+                    float:left;
+                    h2{
+                        font-size:55/@rem;
+                    }
+                }
+                .home_cookBook_top_right{
+                    float:right;
+                    a{
+                        color:rgb(157, 157, 157);
+                        font-size:40/@rem;
+                    }
+                }
+            }
+
+            .home_cookBook_bottom{
+                
+                .cookBook_carousel_wrap{
+                    position: relative;
+                    height:1200/@rem;
+                    width:100%;
+                    // background-color: #fff;
+                    overflow: hidden;
+                    
+                    .cookBook_carousel{
+                        position: absolute;
+                        // overflow: hidden;
+                        width:500%;
+                        // overflow: scroll;
+                        overflow: hidden;
+                        li{
+                            float: left;
+                            width:20%;
+                            // margin-right:5%;
+                            .cookBook_carousel_top,.cookBook_carousel_bottom{
+                                margin-bottom:80/@rem;
+                                .cookBook_carousel_left,.cookBook_carousel_right{
+                                width:50%;
+                                text-align: center;
+                                .carousel_img{
+                                    width:100%;
+                                    height:300/@rem;
+                                    border-radius:10/@rem;
+                                    overflow: hidden;
+                                    a{
+                                        display: block;
+                                        
+                                        // padding:0 20/@rem 0 0;
+                                        img{
+                                            display: inline-block;
+                                            width:100%;
+                                            
+                                        }
+                                    }
+                                }
+                                h3{
+                                    font-size:45/@rem;
+                                    font-weight: normal;
+                                    margin:20/@rem 0;
+                                }
+                                .author_info{
+                                    img{
+                                        display: inline-block;
+                                        width:80/@rem;
+                                        height:80/@rem;
+                                        border-radius: 50%;
+                                        vertical-align: middle;
+                                        margin-right:10/@rem;
+                                    }
+                                    span{
+                                        font-size:40/@rem;
+                                        vertical-align: middle;
+                                        color:rgb(98, 98, 98);
+                                    }
+                                }
+
+                            }
+                            .cookBook_carousel_left{
+                                float:left;
+                                box-sizing: border-box;
+                                padding:0 20/@rem 0 5%;
+                               
+                            }
+                            .cookBook_carousel_right{
+                                float:right;
+                                box-sizing: border-box;
+                                padding:0 5% 0 20/@rem;
+                            }
+                            }
+                        }
+                    }
+
+                    .cookBook_points_wrap{
+                        position: absolute;
+                        width:100%;
+                        bottom:5%;
+                        text-align: center;
+                        span{
+                            display: inline-block;
+                            width:30/@rem;
+                            height:30/@rem;
+                            margin:0 15/@rem;
+                            border-radius:50%;
+                            background-color: rgb(192, 192, 192);
+                            &.carousel_active{
+                                background-color: rgb(98, 98, 98);
+                            }
+                        }
+                    }
+                }
+            }
+        }

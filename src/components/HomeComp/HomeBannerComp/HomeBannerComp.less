@@ -1,0 +1,47 @@
+@rem:1080/16rem;
+
+.home_content_banner{
+    padding-top:40/@rem;
+    background-color: #fff;
+    .banner_carousel_wrap{
+        position: relative;
+        height:700/@rem;
+        width:100%;
+        overflow: hidden;
+        .banner_carousel{
+            // position: absolute;
+            width:700%;
+            overflow: hidden;
+            li{
+                width:100/7%;
+                float: left;
+                box-sizing: border-box;
+                padding:0 40/@rem;
+                a{
+                    display: block;
+                    img{
+                        width:100%;
+                        border-radius: 10/@rem;
+                    }
+                }
+            }
+        }
+        .banner_points_wrap{
+            position: absolute;
+            width:100%;
+            bottom:5%;
+            text-align: center;
+            span{
+                display: inline-block;
+                width:30/@rem;
+                height:30/@rem;
+                margin:0 15/@rem;
+                border-radius:50%;
+                background-color: rgb(192, 192, 192);
+                &.banner_carousel_active{
+                    background-color: rgb(98, 98, 98);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,154 @@
+@rem:1080/16rem;
+
+.searchPanel_wrap{
+    .searchPanel_header{
+        height:140/@rem;
+        .searchPanel_header_left{
+            position: relative;
+            float:left;
+            width:80%;
+            height:100%;
+            box-sizing: border-box;
+            padding:20/@rem 0;
+            margin-left:5%;
+            i{
+                left:5%;
+                font-size:40/@rem;
+                position: absolute;
+                top:50%;
+                margin:-20/@rem 0 0 0;
+                color: rgb(172, 172, 172);
+            }
+            input{
+                padding-left:100/@rem;
+                width:100%;
+                height:100%;
+                box-sizing: border-box;
+                outline: none;
+                border: none;
+                border-radius:20/@rem;
+                font-size:40/@rem;
+                background-color: rgb(247, 247, 247);
+            }
+        }
+        .searchPanel_header_right{
+            float:left;
+            width:15%;
+            color:rgb(84, 84, 84);
+            font-size:40/@rem;
+            text-align: center;
+            line-height:140/@rem;
+        }
+    }
+    .searchPanel_tab{
+        ul{
+            li{
+                float:left;
+                width:33.333%;
+                height:120/@rem;
+                text-align: center;
+                line-height: 120/@rem;
+                a{
+                    display: block;
+                    width:50%;
+                    font-size:45/@rem;
+                    margin-left:25%;
+                    color:rgb(83, 83, 83);
+                    &.switchClass_active{
+                        color:rgb(255, 192, 0);
+                        border-bottom: solid 10/@rem rgb(255, 192, 0);
+                        transition:color .5s ease-in-out;
+                    }
+                }
+                
+            }
+        }
+    }
+    .searchPanel_history{
+        width:90%;
+        margin:80/@rem 0 0 5%;
+        .searchPanel_search_history,.searchPanel_view_history{
+            .searchPanel_history_title{
+                color:rgb(154, 154, 154);
+               .searchPanel_title_left{
+                   float:left;
+                   i{
+                       color:rgb(255, 162, 0);
+                       margin-right:15/@rem;
+                       font-size:40/@rem;
+                   }
+                   span{
+                       font-size:40/@rem;
+                   }
+               } 
+               .searchPanel_title_right{
+                   float:right;
+                    i{
+                        margin-right:15/@rem;
+                        font-size:40/@rem;
+                    }
+                    span{
+                        font-size:40/@rem;
+                    }
+               } 
+            }
+            
+        }
+        .searchPanel_search_history{
+            margin-bottom:80/@rem;
+            .searchPanel_history_option{
+                margin-top:40/@rem;
+               div{
+                   width:200/@rem;
+                   height:120/@rem;
+                   border-radius: 20/@rem;
+                   text-align: center;
+                   line-height:130/@rem;
+                   font-size:40/@rem;
+                   color:rgb(96, 96, 96);
+                   background-color: rgb(247, 247, 247);
+               } 
+            }
+        }
+        .searchPanel_view_history{
+            .searchPanel_history_list{
+                .searchPanel_list_item{
+                    margin-top:60/@rem;
+                  .searchPanel_list_item_left{
+                      float:left;
+                      width:350/@rem;
+                      a{
+                          display: block;
+                          width:350/@rem;
+                          height:250/@rem;
+                          overflow: hidden;
+                          border-radius:20/@rem;
+                        img{
+                            width:100%;
+                            
+                        }
+                      }
+                  }  
+                  .searchPanel_list_item_right{
+                    float:left;
+                    margin-left:40/@rem;
+                    p{
+                        font-size:45/@rem;
+                        margin-bottom:100/@rem;
+                    }
+                    div{
+                        width:150/@rem;
+                        height:70/@rem;
+                        color:#fff;
+                        border-radius: 20/@rem;
+                        text-align: center;
+                        line-height: 70/@rem;
+                        font-size:35/@rem;
+                        background-color: rgb(255, 192, 0);
+                    }
+                  }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,77 @@
+@rem:1080/16rem;
+.lesson_content_recommend{
+    
+    background-color: #fff;
+    .lesson_recommend_top{
+        height:200/@rem;
+        line-height:200/@rem;
+        padding:0 5%;
+        .lesson_recommend_top_left{
+            float:left;
+            h2{
+                font-size:55/@rem;
+            }
+        }
+        .lesson_recommend_top_right{
+            float:right;
+            a{
+                color:rgb(157, 157, 157);
+                font-size:40/@rem;
+            }
+        }
+    }
+    .lesson_recommend_bottom{
+        width:90%;
+        margin-left:5%;
+        padding-bottom:60/@rem;
+        .lesson_recommend_carousel{
+            position: relative;
+            width:100%;
+            overflow:auto;
+            .lesson_recommend_carousel_wrap{
+                width:200%;
+                overflow: hidden;
+                li{
+                    float: left;
+                    width:20%;
+                    box-sizing: border-box;
+                    padding-right:30/@rem;
+                    text-align: center;
+                        .carousel_img{
+                            width:100%;
+                            a{
+                                display: block;
+                                
+                                img{
+                                    display: inline-block;
+                                    width:100%;
+                                    border-radius:10/@rem;
+                                    
+                                }
+                            }
+                        }
+                        h3{
+                            font-size:45/@rem;
+                            font-weight: normal;
+                            margin:20/@rem 0;
+                        }
+                        .author_info{
+                            img{
+                                display: inline-block;
+                                width:80/@rem;
+                                height:80/@rem;
+                                border-radius: 50%;
+                                vertical-align: middle;
+                                margin-right:10/@rem;
+                            }
+                            span{
+                                font-size:40/@rem;
+                                vertical-align: middle;
+                                color:rgb(98, 98, 98);
+                            }
+                        }
+                }    }
+        }
+    }
+
+}
