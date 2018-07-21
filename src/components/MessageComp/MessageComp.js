@@ -14,7 +14,7 @@ class MessageComp extends React.Component{
                 <div className="message_content">
                     <div className="message_content_item clearfix">
                         <div className="message_item_left">
-                            <img src="../../img/admin_logo.jpg" alt=""/>
+                            <img src="./img/admin_logo.jpg" alt=""/>
                         </div>
                         <div className="message_item_right">
                             <div className="message_item_right_top clearfix">

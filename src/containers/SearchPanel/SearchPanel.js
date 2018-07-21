@@ -6,7 +6,7 @@ class SearchPanel extends React.Component{
         super(props)
         this.state={
             search_history:['甜点'],
-            view_history:[{img:'../../img/01.jpg',link:'javascript:;',title:'精致甜品',type:'菜谱'}]
+            view_history:[{img:'./img/01.jpg',link:'javascript:;',title:'精致甜品',type:'菜谱'}]
         }
     }
 
