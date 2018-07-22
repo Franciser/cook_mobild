@@ -52,8 +52,18 @@ class LoginComp extends React.Component{
         }
     }
 
-    setLogin = (e) => {
+    keyUpLogin=(e)=>{
+        if(e.keyCode===13){
+            this.setLogin();              
+        }
+    }
+
+    clickLogin=(e)=>{
         e.preventDefault();
+        this.setLogin();
+    }
+    
+    setLogin = () => {
         var isName = nameReg.test(this.state.loginName);
         var isPass = passwordReg.test(this.state.loginPassword);
         if(isName&&isPass){
@@ -86,7 +96,7 @@ class LoginComp extends React.Component{
                     </div>
                     <div className="login_content_password">
                             <label htmlFor="loginPassword">密码</label>
-                            <input value={this.state.loginPassword} id="loginPassword" type="password" placeholder="登录密码(6-15位)" onChange={this.changePassword_fn}/>
+                            <input value={this.state.loginPassword} id="loginPassword" type="password" placeholder="登录密码(6-15位)" onChange={this.changePassword_fn} onKeyUp={this.keyUpLogin}/>
                     </div>
                     <div className="login_content_option clearfix">
                         <div className="login_option_left">
@@ -96,7 +106,7 @@ class LoginComp extends React.Component{
                             <button>使用验证码登录</button>
                         </div>
                     </div>
-                        <button onTouchStart={this.setLogin} className={this.state.loginName.length > 0 && this.state.loginPassword.length > 0 ? "login_content_loginBtn loginBtn_active" : "login_content_loginBtn"}>登录</button>
+                        <button onTouchStart={this.clickLogin} className={this.state.loginName.length > 0 && this.state.loginPassword.length > 0 ? "login_content_loginBtn loginBtn_active" : "login_content_loginBtn"}>登录</button>
                     <button className="login_content_register">没有账号，立即注册</button>
 
                     </form>

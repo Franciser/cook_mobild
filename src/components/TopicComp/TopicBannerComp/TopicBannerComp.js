@@ -23,7 +23,7 @@ class TopicBannerComp extends React.Component{
             elementX: 0,
             carousel_width: 0,
             scrollNow: false,
-            needTransition: true,
+            needTransition: false,
         }
     }
 
