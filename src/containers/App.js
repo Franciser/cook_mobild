@@ -11,6 +11,7 @@ import Category from "./Category/Category"
 import Lesson from "./Lesson/Lesson"
 import Topic from "./Topic/Topic"
 import My from "./My/My"
+import FoodDetail from "./FoodDetail/FoodDetail"
 class App extends Component {
 
   checkLogin = () => {
@@ -44,6 +45,7 @@ class App extends Component {
             <Route path="/lesson" component={Lesson}/>
             <Route path="/topic" component={Topic}/>
             <Route path="/my" component={My}/>
+            <Route path="/food/:id?" component={FoodDetail}/>
           </Switch>
         </HashRouter>
       </div>
@@ -62,6 +64,7 @@ window.addEventListener('resize', function () {
   rem_fn();
 })
 rem_fn();
+
 
 
 function mapStateToProps(state) {

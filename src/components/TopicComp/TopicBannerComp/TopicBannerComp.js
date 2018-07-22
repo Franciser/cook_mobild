@@ -1,8 +1,16 @@
 import React from "react";
 import "./TopicBannerComp.less"
 var timer = null;
-var scrollTimer = null;
-var isStop = true;
+//定义手指一开始的纵向位置
+var startY = 0;
+//定义手指横向移动了多少距离
+var disX = 0;
+//定义手指横向移动了多少距离
+var disY = 0;
+//判断是否是在横向方向移动是否滑动轮播
+var isX = true;
+//判断是否是第一次滑动
+var isFirst = true;
 class TopicBannerComp extends React.Component{
     constructor(props) {
         super(props)
@@ -28,6 +36,7 @@ class TopicBannerComp extends React.Component{
             disX: 0,
         })
 
+        startY = e.changedTouches[0].clientY;
         if (this.state.index === 0) {
             this.setState({
                 needTransition: false,
@@ -44,9 +53,38 @@ class TopicBannerComp extends React.Component{
             })
         }
 
+        //用来控制鼠标向下滑动防抖动，每次都初始化为true
+        isX = true;
+        isFirst = true;
     }
 
     banner_touchMove_fn = (e) => {
+        //如果是在纵向方向移动就直接返回
+        if (!isX) {
+            //让第一次开关变为false
+            isFirst = false;
+            return;
+        }
+
+        //计算手指横向移动的距离
+        disX = e.changedTouches[0].clientX - this.state.startX
+        //计算手指纵向移动距离
+        disY = e.changedTouches[0].clientY - startY
+
+        if (isFirst) {
+            isFirst = false;
+            //判断纵向距离和横向距离以确定是否是在横向滑动
+            if (Math.abs(disY) > Math.abs(disX)) {
+                isX = false;
+                //如果不是横向滑动，马上返回
+                return;
+            }else{
+                //横向滑动阻止默认事件，页面不会上下滚动
+                e.preventDefault();
+                
+            }
+        }
+        
         this.setState({
             scrollNow: true,
             disX: e.changedTouches[0].clientX - this.state.startX,

@@ -1,5 +1,17 @@
 import React from "react";
 import "./HomeCookBookComp.less"
+import { Link } from "react-router-dom"
+
+//定义手指一开始的纵向位置
+var startY = 0;
+//定义手指横向移动了多少距离
+var disX = 0;
+//定义手指横向移动了多少距离
+var disY = 0;
+//判断是否是在横向方向移动是否滑动轮播
+var isX = true;
+//判断是否是第一次滑动
+var isFirst = true;
 class HomeCookBookComp extends React.Component{
 
     constructor(props) {
@@ -24,6 +36,8 @@ class HomeCookBookComp extends React.Component{
             disX: 0,
         })
 
+        startY = e.changedTouches[0].clientY;
+
         if (this.state.index === 0) {
             this.setState({
                 needTransition: false,
@@ -40,9 +54,37 @@ class HomeCookBookComp extends React.Component{
             })
         }
 
+        //用来控制鼠标向下滑动防抖动，每次都初始化为true
+        isX = true;
+        isFirst = true;
     }
 
     cookBook_touchMove_fn = (e) => {
+        //如果是在纵向方向移动就直接返回
+        if (!isX) {
+            //让第一次开关变为false
+            isFirst = false;
+            return;
+        }
+
+        //计算手指横向移动的距离
+        disX = e.changedTouches[0].clientX - this.state.startX
+        //计算手指纵向移动距离
+        disY = e.changedTouches[0].clientY - startY
+
+        if (isFirst) {
+            isFirst = false;
+            //判断纵向距离和横向距离以确定是否是在横向滑动
+            if (Math.abs(disY) > Math.abs(disX)) {
+                isX = false;
+                //如果不是横向滑动，马上返回
+                return;
+            }else{
+                e.preventDefault();
+                
+            }
+        }
+        
         this.setState({
             scrollNow: true,
             disX: e.changedTouches[0].clientX - this.state.startX,
@@ -117,9 +159,9 @@ class HomeCookBookComp extends React.Component{
                                             <div className="cookBook_carousel_top clearfix">
                                                 <div className="cookBook_carousel_left">
                                                     <div className="carousel_img">
-                                                        <a href={item.left_link}>
+                                                        <Link to={item.left_link}>
                                                             <img src={item.left_img} alt="" />
-                                                        </a>
+                                                        </Link>
                                                     </div>
                                                     <h3>{item.left_title}</h3>
                                                     <div className="author_info">
@@ -129,9 +171,9 @@ class HomeCookBookComp extends React.Component{
                                                 </div>
                                                 <div className="cookBook_carousel_right">
                                                     <div className="carousel_img">
-                                                        <a href={item.right_link}>
+                                                        <Link to={item.right_link}>
                                                             <img src={item.right_img} alt="" />
-                                                        </a>
+                                                        </Link>
                                                     </div>
                                                     <h3>{item.right_title}</h3>
                                                     <div className="author_info">
@@ -143,9 +185,9 @@ class HomeCookBookComp extends React.Component{
                                             <div className="cookBook_carousel_bottom clearfix">
                                                 <div className="cookBook_carousel_left">
                                                     <div className="carousel_img">
-                                                        <a href={item.left_link}>
+                                                        <Link to={item.left_link}>
                                                             <img src={item.left_img} alt="" />
-                                                        </a>
+                                                        </Link>
                                                     </div>
                                                     <h3>{item.left_title}</h3>
                                                     <div className="author_info">
@@ -155,9 +197,9 @@ class HomeCookBookComp extends React.Component{
                                                 </div>
                                                 <div className="cookBook_carousel_right">
                                                     <div className="carousel_img">
-                                                        <a href={item.right_link}>
+                                                        <Link to={item.right_link}>
                                                             <img src={item.right_img} alt="" />
-                                                        </a>
+                                                        </Link>
                                                     </div>
                                                     <h3>{item.right_title}</h3>
                                                     <div className="author_info">

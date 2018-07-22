@@ -1,5 +1,6 @@
 import React from "react";
 import "./HomeSelectComp.less"
+import {Link} from "react-router-dom"
 class HomeSelectComp extends React.Component{
 
     constructor(props) {
@@ -28,7 +29,7 @@ class HomeSelectComp extends React.Component{
                         this.props.select.map((item,index)=>{
                             return(
                                 <div className="home_select_item" key={index}>
-                                    <a href={item.link}>
+                                    <Link to={item.link}>
                                         <img src={item.img} alt="" />
                                         <div className="select_item_title">
                                             <h2>{item.title}</h2>
@@ -38,7 +39,7 @@ class HomeSelectComp extends React.Component{
                                             <span>{item.authorName}</span>
                                             <span>{item.detail}</span>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                             )
                         })

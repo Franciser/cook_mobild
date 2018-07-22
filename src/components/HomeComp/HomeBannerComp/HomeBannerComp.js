@@ -1,8 +1,17 @@
 import React from "react";
 import "./HomeBannerComp.less"
+import { Link } from "react-router-dom"
 var timer = null;
-var scrollTimer=null;
-var isStop=true;
+//定义手指一开始的纵向位置
+var startY = 0;
+//定义手指横向移动了多少距离
+var disX = 0;
+//定义手指横向移动了多少距离
+var disY = 0;
+//判断是否是在横向方向移动是否滑动轮播
+var isX = true;
+//判断是否是第一次滑动
+var isFirst = true;
 class HomeBannerComp extends React.Component{
     
     constructor(props) {
@@ -22,12 +31,16 @@ class HomeBannerComp extends React.Component{
     
 
     banner_touchStart_fn = (e) => {
+        
+        
         clearInterval(timer);
         this.setState({
             needTransition: false,
             startX: e.changedTouches[0].clientX,
             disX: 0,
         })
+
+        startY = e.changedTouches[0].clientY;
 
         if (this.state.index === 0) {
             this.setState({
@@ -45,13 +58,43 @@ class HomeBannerComp extends React.Component{
             })
         }
 
+        //用来控制鼠标向下滑动防抖动，每次都初始化为true
+        isX = true;
+        isFirst = true;
     }
 
     banner_touchMove_fn = (e) => {
+        //如果是在纵向方向移动就直接返回
+        if (!isX) {
+            //让第一次开关变为false
+            isFirst = false;
+            return;
+        }
+
+        //计算手指横向移动的距离
+        disX = e.changedTouches[0].clientX - this.state.startX
+        //计算手指纵向移动距离
+        disY = e.changedTouches[0].clientY - startY
+        
+        if (isFirst) {
+            isFirst = false;
+            //判断纵向距离和横向距离以确定是否是在横向滑动
+            if (Math.abs(disY) > Math.abs(disX)) {
+                isX = false;
+                //如果不是横向滑动，马上返回
+                return;
+            }else{
+                e.preventDefault();
+            }
+        }
+        
         this.setState({
             scrollNow: true,
             disX: e.changedTouches[0].clientX - this.state.startX,
         })
+
+        // console.log(disX)
+        // console.log(disY)
     }
 
     banner_touchEnd_fn = (e) => {
@@ -87,7 +130,7 @@ class HomeBannerComp extends React.Component{
             })
         }
 
-        // timer = setInterval(this.autoPlay, 1000)
+        timer = setInterval(this.autoPlay, 3000)
     }
 
     
@@ -95,7 +138,6 @@ class HomeBannerComp extends React.Component{
     //自动轮播函数
     autoPlay=()=>{
     
-
         if (this.state.index === this.state.length - 1) {
             this.setState({
                 needTransition: false,
@@ -123,7 +165,7 @@ class HomeBannerComp extends React.Component{
             length: this.props.banner.length,
         })
 
-        // timer = setInterval(this.autoPlay, 1000)
+        timer = setInterval(this.autoPlay, 3000)
     }
 
     componentWillUnmount() {
@@ -135,17 +177,18 @@ class HomeBannerComp extends React.Component{
     render(){
         // console.log(this.state.elementX)
         // console.log(this.state.point_key)
+        // console.log(this.state.index)
         return (
             <div className="home_content_banner">
                     <div className="banner_carousel_wrap" onTouchStart={this.banner_touchStart_fn} onTouchMove={this.banner_touchMove_fn} onTouchEnd={this.banner_touchEnd_fn}>
-                        <ul className="banner_carousel clearfix" style={{ transform: this.state.scrollNow ? "translateX(" + (this.state.elementX + this.state.disX) + "px)" : "translateX(" + (-(this.state.index) * this.state.carousel_width) + "px)", transition: this.state.needTransition ? "transform .3s" : 'transform 0s' }}>
+                        <ul className="banner_carousel clearfix" style={{ transform: this.state.scrollNow ? "translateX(" + (this.state.elementX + this.state.disX) + "px)" : "translateX(" + (-(this.state.index) * this.state.carousel_width) + "px)", transition: this.state.needTransition===true ? "transform .3s" : 'transform 0s' }}>
                             {
                                 this.props.banner.map((item, index) => {
                                     return (
                                         <li className="clearfix" key={index}>
-                                           <a href={item.link}>
+                                           <Link to={item.link}>
                                             <img src={item.img} alt=""/>
-                                           </a>
+                                           </Link>
                                         </li>
                                     )
                                 })
