@@ -165,6 +165,14 @@ class HomeBannerComp extends React.Component{
             length: this.props.banner.length,
         })
 
+        window.addEventListener('resize', function () {
+            this.setState({
+                elementX: -document.documentElement.offsetWidth,
+                carousel_width: document.documentElement.offsetWidth,
+                length: this.props.banner.length,
+            })
+        }.bind(this))
+
         timer = setInterval(this.autoPlay, 3000)
     }
 
@@ -173,6 +181,9 @@ class HomeBannerComp extends React.Component{
             return;
         };
     }
+    
+
+    
     
     render(){
         // console.log(this.state.elementX)

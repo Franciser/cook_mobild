@@ -55,12 +55,23 @@ class App extends Component {
 
 function rem_fn() {
   var styleNode = document.createElement('style');
-  var w = document.documentElement.clientWidth / 16;
+  var w=0;
+  if (document.documentElement.clientWidth >= 1024) {
+    w = 1024 / 16;
+    document.documentElement.style.width="1024px";
+  }else{
+    w = document.documentElement.clientWidth / 16;
+    document.documentElement.style.width = document.documentElement.clientWidth + "px";
+  }
   styleNode.innerHTML = "html{font-size:" + w + "px!important}";
+  
   document.head.appendChild(styleNode)
 }
 
 window.addEventListener('resize', function () {
+  // document.documentElement.style.width = "375px";
+  // console.log(document.documentElement.offsetWidth)
+  // console.log(document.documentElement.clientWidth)
   rem_fn();
 })
 rem_fn();
@@ -79,4 +90,6 @@ function mapDispatchToProps(dispatch) {
     userNameAction: bindActionCreators(userName_action, dispatch),
   }
 }
+
+console.error('建议使用chrome手机模式浏览')
 export default connect(mapStateToProps, mapDispatchToProps)(App)

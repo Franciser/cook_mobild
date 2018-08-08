@@ -134,6 +134,20 @@ class HomeRecommendComp extends React.Component{
             carousel_width: document.documentElement.offsetWidth,
             length: this.props.recommend.length,
         })
+
+        window.addEventListener('resize',function(){
+            this.setState({
+                elementX: -document.documentElement.offsetWidth,
+                carousel_width: document.documentElement.offsetWidth,
+                length: this.props.recommend.length,
+            })
+        }.bind(this))
+    }
+
+    componentWillUnmount() {
+        this.setState = (state, callback) => {
+            return;
+        };
     }
     
     render(){

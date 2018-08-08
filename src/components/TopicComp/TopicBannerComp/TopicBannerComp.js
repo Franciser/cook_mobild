@@ -124,7 +124,7 @@ class TopicBannerComp extends React.Component{
             })
         }
 
-        // timer = setInterval(this.autoPlay, 1000)
+        timer = setInterval(this.autoPlay, 2000)
     }
 
 
@@ -160,7 +160,15 @@ class TopicBannerComp extends React.Component{
             length: this.props.banner.length,
         })
 
-        // timer = setInterval(this.autoPlay, 1000)
+        window.addEventListener('resize', function () {
+            this.setState({
+                elementX: -document.documentElement.offsetWidth,
+                carousel_width: document.documentElement.offsetWidth,
+                length: this.props.banner.length,
+            })
+        }.bind(this))
+
+        timer = setInterval(this.autoPlay, 2000)
     }
 
     componentWillUnmount() {
